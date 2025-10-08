@@ -133,6 +133,10 @@ public class BookStore
         this.storeName = storeName;
     }
 
+    /*
+    Check a string for null or blankness, invalid if either is true.
+    Throws new IllegalArgumentException
+     */
     private void checkString(final String s)
     {
         if (s == null || s.isBlank())
@@ -142,12 +146,22 @@ public class BookStore
     }
 
     /**
+     * Getter for store name
+     *
+     * @return store name as string
+     */
+    public String getStoreName()
+    {
+        return storeName;
+    }
+
+    /**
      * Prints all novel titles to screen in bookstores book list
      * Prints titles in all uppercase
      */
     public void printAllTitle()
     {
-        if (bookList.size() != 0)
+        if (bookList != null)
         {
             for(final Novel book: bookList)
             {
@@ -164,7 +178,7 @@ public class BookStore
      */
     public void printBookTitle(final String word)
     {
-        if (bookList.size() != 0)
+        if (bookList != null)
         {
             for (final Novel book: bookList)
             {
@@ -181,9 +195,10 @@ public class BookStore
      */
     public void printTitlesInAlphaOrder()
     {
-        if (bookList.size() != 0)
+        if (bookList != null)
         {
             Collections.sort(bookList);
+
             for (final Novel book: bookList)
             {
                 System.out.println(book.getTitle());

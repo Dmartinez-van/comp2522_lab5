@@ -112,13 +112,7 @@ public class Novel implements Comparable<Novel>
             // if equal, continue to next character
         }
 
-        // If all characters match up to minLength, the shorter string comes first
-        if (thisTitle.length() < thatTitle.length()) {
-            return -1;
-        } else if (thisTitle.length() > thatTitle.length()) {
-            return 1;
-        } else {
-            return 0; // titles are equal
-        }
+        // Return -1 if this title is shorter, 1 if this title is longer, or 0 if equal.
+        return Integer.compare(thisTitle.length(), thatTitle.length());
     }
 }
