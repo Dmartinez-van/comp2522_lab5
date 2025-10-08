@@ -232,7 +232,16 @@ public class BookStore
      */
     public boolean isThereABookWrittenIn(final int year)
     {
-
+        if (bookList != null)
+        {
+            for (final Novel book: bookList)
+            {
+                if (book.getYearPublished() == year)
+                {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -302,6 +311,20 @@ public class BookStore
         // printTitlesInAlphaOrder() works
 //        bookStore.printTitlesInAlphaOrder();
 
+        // Testing isThereABookWrittenIn() method
+        final int[] yearsToCheck = {1801, 1901, 1960};
+        for (final int checkYear : yearsToCheck)
+        {
+            System.out.printf("Is there a book written in %d?\n", checkYear);
+            if (bookStore.isThereABookWrittenIn(checkYear))
+            {
+                System.out.println("Yes");
+            }
+            else
+            {
+                System.out.println("No");
+            }
+        }
 
     }
 }
