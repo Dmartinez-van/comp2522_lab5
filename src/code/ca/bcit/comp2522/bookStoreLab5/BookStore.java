@@ -210,7 +210,7 @@ public class BookStore
      * Prints all books published in the specified decade.
      * @param decade the starting year of the decade (e.g., 2000 for 2000-2009)
      */
-    public void printGroupByDecade(int decade)
+    public void printGroupByDecade(final int decade)
     {
         // TODO: Implement
     }
@@ -230,9 +230,9 @@ public class BookStore
      * @param year the year to check
      * @return true if at least one book was published in that year, false otherwise
      */
-    public boolean isThereABookWrittenIn(int year)
+    public boolean isThereABookWrittenIn(final int year)
     {
-        // TODO: Implement
+
         return false;
     }
 
@@ -241,7 +241,7 @@ public class BookStore
      * @param word the word to search for in book titles
      * @return the number of books that contain the word in their title
      */
-    public int howManyBooksContain(String word)
+    public int howManyBooksContain(final String word)
     {
         // TODO: Implement
         return 0;
@@ -253,7 +253,7 @@ public class BookStore
      * @param last the ending year (inclusive)
      * @return the percentage of books written between these years
      */
-    public double whichPercentWrittenBetween(int first, int last)
+    public double whichPercentWrittenBetween(final int first, final int last)
     {
         // TODO: Implement
         return 0.0;
@@ -274,7 +274,7 @@ public class BookStore
      * @param titleLength the length of the title to search for
      * @return a List of Novel objects whose titles are exactly this length
      */
-    public List<Novel> getBooksThisLength(int titleLength)
+    public List<Novel> getBooksThisLength(final int titleLength)
     {
         // TODO: Implement
         return null;

@@ -26,6 +26,10 @@ public class Novel implements Comparable<Novel>
         this.yearPublished = yearPublished;
     }
 
+    /*
+    Checks year published for negative year value, invalid if true
+    Throws new IllegalArgumentException
+     */
     private void checkYearPublished(final int yearPublished)
     {
         if (yearPublished < 0)
@@ -34,6 +38,10 @@ public class Novel implements Comparable<Novel>
         }
     }
 
+    /*
+    Checks string for null or blankness, invalid if true
+    Throws new IllegalArgumentException
+     */
     private void checkString(final String s)
     {
         if (s == null || s.isBlank())
@@ -106,7 +114,8 @@ public class Novel implements Comparable<Novel>
 
             if (thisChar < thatChar) {
                 return -1; // this comes before other
-            } else if (thisChar > thatChar) {
+            }
+            else if (thisChar > thatChar) {
                 return 1; // this comes after other
             }
             // if equal, continue to next character
