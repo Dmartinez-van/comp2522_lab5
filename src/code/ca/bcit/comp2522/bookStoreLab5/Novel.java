@@ -9,6 +9,8 @@ package ca.bcit.comp2522.bookStoreLab5;
  */
 public class Novel implements Comparable<Novel>
 {
+    public static final int MIN_YEAR_PUBLISHED = 0;
+
     private final String title;
     private final String author;
     private final int yearPublished;
@@ -32,7 +34,7 @@ public class Novel implements Comparable<Novel>
      */
     private void checkYearPublished(final int yearPublished)
     {
-        if (yearPublished < 0)
+        if (yearPublished < MIN_YEAR_PUBLISHED)
         {
             throw new IllegalArgumentException("Year published is negative");
         }
