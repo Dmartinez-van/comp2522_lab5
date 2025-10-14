@@ -288,8 +288,22 @@ public class BookStore
      */
     public int howManyBooksContain(final String word)
     {
-        // TODO: Implement
-        return 0;
+        int containCount;
+        String lowercaseWord;
+
+        containCount = 0;
+        lowercaseWord = word.trim().toLowerCase();
+
+        for (final Novel book: bookList)
+        {
+            String lowercaseBookTitle;
+            lowercaseBookTitle = book.getTitle().toLowerCase();
+            if (lowercaseBookTitle.contains(lowercaseWord))
+            {
+                containCount++;
+            }
+        }
+        return containCount;
     }
 
     /**
@@ -300,8 +314,27 @@ public class BookStore
      */
     public double whichPercentWrittenBetween(final int first, final int last)
     {
-        // TODO: Implement
-        return 0.0;
+        int bookCount;
+        int totalBooks;
+        double percentageBetween;
+
+        bookCount = 0;
+
+        for (final Novel book: bookList)
+        {
+            int yearPublished;
+            yearPublished = book.getYearPublished();
+
+            if (yearPublished >= first && yearPublished <= last)
+            {
+                bookCount++;
+            }
+        }
+
+        totalBooks = bookList.size();
+        percentageBetween = (double) bookCount / (double) totalBooks;
+
+        return percentageBetween * 100.0;
     }
 
     /**
@@ -351,7 +384,9 @@ public class BookStore
 //        bookStore.printGroupByDecade(2000);
 //        System.out.println();
 
-        System.out.println(bookStore.getLongest().toString());
+//        System.out.println(bookStore.whichPercentWrittenBetween(2000, 2009));
+
+//        System.out.println(bookStore.getLongest().toString());
 
         // Testing isThereABookWrittenIn() method
         final int[] yearsToCheck = {1801, 1901, 1960};
