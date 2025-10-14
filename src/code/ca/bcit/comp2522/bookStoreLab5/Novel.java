@@ -9,11 +9,12 @@ package ca.bcit.comp2522.bookStoreLab5;
  */
 public class Novel implements Comparable<Novel>
 {
+    /** The minimum year value allowed for a novel */
     public static final int MIN_YEAR_PUBLISHED = 0;
 
     private final String title;
     private final String author;
-    private final int yearPublished;
+    private final int    yearPublished;
 
     Novel(final String title,
           final String author,
@@ -99,7 +100,7 @@ public class Novel implements Comparable<Novel>
     {
         final String thisTitle;
         final String thatTitle;
-        final int minLength;
+        final int    minLength;
 
         thisTitle = this.title.toLowerCase();
         thatTitle = that.title.toLowerCase();
@@ -127,8 +128,34 @@ public class Novel implements Comparable<Novel>
         return Integer.compare(thisTitle.length(), thatTitle.length());
     }
 
+    /**
+     * Returns string sentence of the object instance data
+     *
+     * @return string sentence of instance data
+     */
     @Override
     public String toString() {
-        return "\"" + title + "\" by " + author + ", " + yearPublished;
+        final StringBuilder sb;
+        sb = new StringBuilder();
+
+        sb.append("\"");
+        sb.append(title);
+        sb.append("\"");
+        sb.append(" by ");
+        sb.append(author);
+        sb.append(", ");
+        sb.append(yearPublished);
+
+        return sb.toString();
+    }
+
+    /**
+     * Getter for author's name
+     *
+     * @return a string of the author's name
+     */
+    public String getAuthorName()
+    {
+        return author;
     }
 }

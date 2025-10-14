@@ -23,7 +23,7 @@ public class Main
         System.out.println("\nLongest Book Title:");
         bookstore.getLongest();
         System.out.println("\nIs there a book written in 1950?");
-        System.out.println(bookstore.isThereABookWrittenBetween(1950));
+        System.out.println(bookstore.isThereABookWrittenIn(1950));
         System.out.println("\nHow many books contain 'heart'?");
         System.out.println(bookstore.howManyBooksContain("heart"));
         System.out.println("\nPercentage of books written between 1940 and 1950:");
@@ -35,6 +35,5 @@ public class Main
         System.out.println("\nBooks with titles 15 characters long:");
         fifteenCharTitles =bookstore.getBooksThisLength(15);
         fifteenCharTitles.forEach(novel ->System.out.println(novel.getTitle()));
-    }
     }
 }

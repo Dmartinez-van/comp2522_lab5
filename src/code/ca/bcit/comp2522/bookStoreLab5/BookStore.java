@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class BookStore
 {
+    private static final double HUNDRED_PERCENT = 100.0;
+    private static final int    DECADE_CALCULATION_DIVISOR = 10;
+    private static final int    SAME = 0;
+
     private final String storeName;
     private final List<Novel> bookList;
 
@@ -212,18 +216,16 @@ public class BookStore
      */
     public void printGroupByDecade(final int decade)
     {
-        final int decadeCalculationDivisor;
         final int targetDecade;
         int bookDecade;
 
-        decadeCalculationDivisor = 10;
-        targetDecade = decade / decadeCalculationDivisor;
+        targetDecade = decade / DECADE_CALCULATION_DIVISOR;
 
         if (bookList != null)
         {
             for (final Novel book : bookList)
             {
-                bookDecade = book.getYearPublished() / decadeCalculationDivisor;
+                bookDecade = book.getYearPublished() / DECADE_CALCULATION_DIVISOR;
                 if (bookDecade == targetDecade)
                 {
                     System.out.println(book.getTitle());
@@ -246,7 +248,7 @@ public class BookStore
 
         for (final Novel book : bookList)
         {
-            String rawTitle;
+            final String rawTitle;
             int rawTitleLength;
 
             rawTitle = book.getTitle().replace(" ", "");
@@ -258,6 +260,7 @@ public class BookStore
                 longestTitleLengthChars = rawTitleLength;
             }
         }
+
         return longestTitleNovel;
     }
 
@@ -278,6 +281,7 @@ public class BookStore
                 }
             }
         }
+
         return false;
     }
 
@@ -288,8 +292,9 @@ public class BookStore
      */
     public int howManyBooksContain(final String word)
     {
+        final String lowercaseWord;
+
         int containCount;
-        String lowercaseWord;
 
         containCount = 0;
         lowercaseWord = word.trim().toLowerCase();
@@ -298,6 +303,7 @@ public class BookStore
         {
             String lowercaseBookTitle;
             lowercaseBookTitle = book.getTitle().toLowerCase();
+
             if (lowercaseBookTitle.contains(lowercaseWord))
             {
                 containCount++;
@@ -312,7 +318,8 @@ public class BookStore
      * @param last the ending year (inclusive)
      * @return the percentage of books written between these years
      */
-    public double whichPercentWrittenBetween(final int first, final int last)
+    public double whichPercentWrittenBetween(final int first,
+                                             final int last)
     {
         int bookCount;
         int totalBooks;
@@ -322,7 +329,7 @@ public class BookStore
 
         for (final Novel book: bookList)
         {
-            int yearPublished;
+            final int yearPublished;
             yearPublished = book.getYearPublished();
 
             if (yearPublished >= first && yearPublished <= last)
@@ -332,9 +339,9 @@ public class BookStore
         }
 
         totalBooks = bookList.size();
-        percentageBetween = (double) bookCount / (double) totalBooks;
+        percentageBetween = ((double) bookCount / (double) totalBooks) * HUNDRED_PERCENT;
 
-        return percentageBetween * 100.0;
+        return percentageBetween;
     }
 
     /**
@@ -343,8 +350,23 @@ public class BookStore
      */
     public Novel getOldestBook()
     {
-        // TODO: Implement
-        return null;
+        Novel oldestNovel;
+
+        oldestNovel = null;
+
+        for (final Novel book: bookList)
+        {
+            if (oldestNovel == null)
+            {
+                oldestNovel = book;
+            }
+            else if (oldestNovel.getYearPublished() > book.getYearPublished())
+            {
+                oldestNovel = book;
+            }
+        }
+
+        return oldestNovel;
     }
 
     /**
@@ -402,6 +424,9 @@ public class BookStore
                 System.out.println("No");
             }
         }
+
+        // TESTING getOldestBook() method
+        System.out.println("What is oldest book?\n" + bookStore.getOldestBook());
 
     }
 }
