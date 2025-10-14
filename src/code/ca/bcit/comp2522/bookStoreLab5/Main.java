@@ -21,7 +21,7 @@ public class Main
         System.out.println("\nBooks from the 2000s:");
         bookstore.printGroupByDecade(2000);
         System.out.println("\nLongest Book Title:");
-        bookstore.getLongest();
+        System.out.println(bookstore.getLongest());
         System.out.println("\nIs there a book written in 1950?");
         System.out.println(bookstore.isThereABookWrittenIn(1950));
         System.out.println("\nHow many books contain 'heart'?");

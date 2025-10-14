@@ -4,7 +4,7 @@ package ca.bcit.comp2522.bookStoreLab5;
  * A Novel has a title, author, and year published
  *
  * @author David Martinez,
- * Daniel Do
+ *         Daniel Do
  * @version 1.0
  */
 public class Novel implements Comparable<Novel>

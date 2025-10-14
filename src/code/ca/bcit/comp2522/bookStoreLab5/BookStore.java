@@ -249,6 +249,7 @@ public class BookStore
         for (final Novel book : bookList)
         {
             final String rawTitle;
+
             int rawTitleLength;
 
             rawTitle = book.getTitle().replace(" ", "");
@@ -376,8 +377,22 @@ public class BookStore
      */
     public List<Novel> getBooksThisLength(final int titleLength)
     {
-        // TODO: Implement
-        return null;
+        final List<Novel> booksOfCertainTitleLength;
+
+        booksOfCertainTitleLength = new ArrayList<>();
+
+        for (final Novel book: bookList)
+        {
+            final int bookTitleLength;
+            bookTitleLength = book.getTitle().length();
+
+            if (bookTitleLength == titleLength)
+            {
+                booksOfCertainTitleLength.add(book);
+            }
+        }
+
+        return booksOfCertainTitleLength;
     }
 
         /**
@@ -427,6 +442,13 @@ public class BookStore
 
         // TESTING getOldestBook() method
         System.out.println("What is oldest book?\n" + bookStore.getOldestBook());
+        System.out.println();
+
+        // TESTING books of certain length
+        final List<Novel> myBooks = bookStore.getBooksThisLength(19);
+        System.out.println("Getting books of length '20'");
+        System.out.println(myBooks);
+
 
     }
 }
