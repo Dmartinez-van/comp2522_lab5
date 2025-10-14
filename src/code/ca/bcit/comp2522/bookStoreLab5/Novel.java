@@ -126,4 +126,9 @@ public class Novel implements Comparable<Novel>
         // Return -1 if this title is shorter, 1 if this title is longer, or 0 if equal.
         return Integer.compare(thisTitle.length(), thatTitle.length());
     }
+
+    @Override
+    public String toString() {
+        return "\"" + title + "\" by " + author + ", " + yearPublished;
+    }
 }

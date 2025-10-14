@@ -27,6 +27,8 @@ public class BookStore
     {
         checkString(storeName);
 
+        this.storeName = storeName;
+
         //TODO Move to external file and read from file instead?
         bookList = new ArrayList<Novel>();
         bookList.add(new Novel("The Adventures of Augie March", "Saul Bellow", 1953));
@@ -129,8 +131,6 @@ public class BookStore
         bookList.add(new Novel("White Noise", "Don DeLillo", 1985));
         bookList.add(new Novel("White Teeth", "Zadie Smith", 2000));
         bookList.add(new Novel("Wide Sargasso Sea", "Jean Rhys", 1966));
-
-        this.storeName = storeName;
     }
 
     /*
@@ -159,7 +159,7 @@ public class BookStore
      * Prints all novel titles to screen in bookstores book list
      * Prints titles in all uppercase
      */
-    public void printAllTitle()
+    public void printAllTitles()
     {
         if (bookList != null)
         {
@@ -208,11 +208,28 @@ public class BookStore
 
     /**
      * Prints all books published in the specified decade.
-     * @param decade the starting year of the decade (e.g., 2000 for 2000-2009)
+     * @param decade the target decade
      */
     public void printGroupByDecade(final int decade)
     {
-        // TODO: Implement
+        final int decadeCalculationDivisor;
+        final int targetDecade;
+        int bookDecade;
+
+        decadeCalculationDivisor = 10;
+        targetDecade = decade / decadeCalculationDivisor;
+
+        if (bookList != null)
+        {
+            for (final Novel book : bookList)
+            {
+                bookDecade = book.getYearPublished() / decadeCalculationDivisor;
+                if (bookDecade == targetDecade)
+                {
+                    System.out.println(book.getTitle());
+                }
+            }
+        }
     }
 
     /**
@@ -221,8 +238,27 @@ public class BookStore
      */
     public Novel getLongest()
     {
-        // TODO: Implement
-        return null;
+        Novel longestTitleNovel;
+        int longestTitleLengthChars;
+
+        longestTitleNovel = null;
+        longestTitleLengthChars = 0;
+
+        for (final Novel book : bookList)
+        {
+            String rawTitle;
+            int rawTitleLength;
+
+            rawTitle = book.getTitle().replace(" ", "");
+            rawTitleLength = rawTitle.length();
+
+            if (rawTitleLength > longestTitleLengthChars)
+            {
+                longestTitleNovel = book;
+                longestTitleLengthChars = rawTitleLength;
+            }
+        }
+        return longestTitleNovel;
     }
 
     /**
@@ -310,6 +346,12 @@ public class BookStore
 
         // printTitlesInAlphaOrder() works
 //        bookStore.printTitlesInAlphaOrder();
+
+        // printGroupByDecade() works
+//        bookStore.printGroupByDecade(2000);
+//        System.out.println();
+
+        System.out.println(bookStore.getLongest().toString());
 
         // Testing isThereABookWrittenIn() method
         final int[] yearsToCheck = {1801, 1901, 1960};
