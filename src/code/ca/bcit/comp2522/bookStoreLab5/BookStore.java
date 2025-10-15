@@ -21,7 +21,6 @@ public class BookStore
 {
     private static final double HUNDRED_PERCENT = 100.0;
     private static final int    DECADE_CALCULATION_DIVISOR = 10;
-    private static final int    SAME = 0;
 
     private final String storeName;
     private final List<Novel> bookList;
@@ -43,7 +42,6 @@ public class BookStore
         final Map<String, Novel> storeMap;
         final Iterator<String> it;
 
-        //TODO Move to external file and read from file instead?
         bookList = new ArrayList<Novel>();
         bookList.add(new Novel("The Adventures of Augie March", "Saul Bellow", 1953));
         bookList.add(new Novel("All the King's Men", "Robert Penn Warren", 1946));
@@ -150,28 +148,33 @@ public class BookStore
 
         for (final Novel book : bookList)
         {
-            storeMap.put(book.getTitle(), book);
+            storeMap.put(book.getTitle().toLowerCase(), book);
         }
 
+        // Step 1: Get keys from the hashmap
         titlesSet = storeMap.keySet();
+
+        // Step 2: Convert the Set to a List
         keyList = new ArrayList<>(titlesSet);
 
+        // Step 3: Sort the List
         Collections.sort(keyList);
 
+        // Step 4: Use sorted keys to get Map values
         it = keyList.iterator();
 
-        // Use iterator to remve novels whose title contains "the"
+        // Step 5: Use iterator to remove keys whose title contains "the" (ignore case)
         while(it.hasNext())
         {
-            if (it.next().contains("the"))
+            final String novelKey = it.next();
+            if(novelKey.contains("the"))
             {
-                System.out.println("Removing");
-                storeMap.remove(it.next());
+                storeMap.remove(novelKey);
             }
         }
 
-
-        System.out.println(storeMap);
+        // Step 6: Print hashmap without titles containing "the"
+        System.out.println("store map removed all 'the' titles:\n" + storeMap);
     }
 
     /*
@@ -432,11 +435,11 @@ public class BookStore
         return booksOfCertainTitleLength;
     }
 
-        /**
-         * Runner class for lab5
-         *
-         * @param args unused
-         */
+    /**
+     * Runner class for lab5
+     *
+     * @param args unused
+     */
     public static void main(final String[] args)
     {
         final BookStore bookStore;
