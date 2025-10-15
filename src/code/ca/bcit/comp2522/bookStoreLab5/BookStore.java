@@ -3,6 +3,11 @@ package ca.bcit.comp2522.bookStoreLab5;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Iterator;
+
 
 /**
  * BookStore can hold many {@link Novel} objects.
@@ -32,6 +37,11 @@ public class BookStore
         checkString(storeName);
 
         this.storeName = storeName;
+
+        final List<String> keyList;
+        final Set<String> titlesSet;
+        final Map<String, Novel> storeMap;
+        final Iterator<String> it;
 
         //TODO Move to external file and read from file instead?
         bookList = new ArrayList<Novel>();
@@ -135,6 +145,33 @@ public class BookStore
         bookList.add(new Novel("White Noise", "Don DeLillo", 1985));
         bookList.add(new Novel("White Teeth", "Zadie Smith", 2000));
         bookList.add(new Novel("Wide Sargasso Sea", "Jean Rhys", 1966));
+
+        storeMap = new HashMap<>();
+
+        for (final Novel book : bookList)
+        {
+            storeMap.put(book.getTitle(), book);
+        }
+
+        titlesSet = storeMap.keySet();
+        keyList = new ArrayList<>(titlesSet);
+
+        Collections.sort(keyList);
+
+        it = keyList.iterator();
+
+        // Use iterator to remve novels whose title contains "the"
+        while(it.hasNext())
+        {
+            if (it.next().contains("the"))
+            {
+                System.out.println("Removing");
+                storeMap.remove(it.next());
+            }
+        }
+
+
+        System.out.println(storeMap);
     }
 
     /*
