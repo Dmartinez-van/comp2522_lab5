@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.bookStoreLab5;
+package ca.bcit.comp2522.bookstorelab5;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Has instance data for store name and list of bookList it has.
  *
  * @author David Martinez,
- *         Daniel Do
+ * @author Daniel Do
  * @version 1.0
  */
 public class BookStore
@@ -180,7 +180,7 @@ public class BookStore
     Check a string for null or blankness, invalid if either is true.
     Throws new IllegalArgumentException
      */
-    private void checkString(final String s)
+    private static void checkString(final String s)
     {
         if (s == null || s.isBlank())
         {

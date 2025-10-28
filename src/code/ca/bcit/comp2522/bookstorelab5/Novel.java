@@ -1,13 +1,14 @@
-package ca.bcit.comp2522.bookStoreLab5;
+package ca.bcit.comp2522.bookstorelab5;
 
 /**
  * A Novel with a title, author, and year published.
  *
  * @author David Martinez,
- *         Daniel Do
+ * @author Daniel Do
  * @version 1.0
  */
-public class Novel implements Comparable<Novel>
+public class Novel
+        implements Comparable<Novel>
 {
     /** The minimum year value allowed for a novel */
     public static final int MIN_YEAR_PUBLISHED = 0;
@@ -18,7 +19,7 @@ public class Novel implements Comparable<Novel>
 
     Novel(final String title,
           final String author,
-          final int    yearPublished)
+          final int yearPublished)
     {
         checkString(title);
         checkString(author);
@@ -33,7 +34,7 @@ public class Novel implements Comparable<Novel>
     Checks year published for negative year value, invalid if true
     Throws new IllegalArgumentException
      */
-    private void checkYearPublished(final int yearPublished)
+    private static void checkYearPublished(final int yearPublished)
     {
         if (yearPublished < MIN_YEAR_PUBLISHED)
         {
@@ -45,7 +46,7 @@ public class Novel implements Comparable<Novel>
     Checks string for null or blankness, invalid if true
     Throws new IllegalArgumentException
      */
-    private void checkString(final String s)
+    private static void checkString(final String s)
     {
         if (s == null || s.isBlank())
         {

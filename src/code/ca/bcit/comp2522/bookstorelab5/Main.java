@@ -1,4 +1,4 @@
-package ca.bcit.comp2522.bookStoreLab5;
+package ca.bcit.comp2522.bookstorelab5;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * Runner Class for Lab5.
  *
  * @author David Martinez
- *         Daniel Do
+ * @author Daniel Do
  * @version 1.0
  */
 public class Main
