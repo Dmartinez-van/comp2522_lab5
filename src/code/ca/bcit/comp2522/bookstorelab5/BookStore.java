@@ -20,6 +20,7 @@ public class BookStore
 {
     private static final double HUNDRED_PERCENT = 100.0;
     private static final int    DECADE_CALCULATION_DIVISOR = 10;
+    private static final int    NONE = 0;
 
     private final String storeName;
     private final List<Novel> bookList;
@@ -165,7 +166,9 @@ public class BookStore
         // Step 5: Use iterator to remove keys whose title contains "the" (ignore case)
         while(it.hasNext())
         {
-            final String novelKey = it.next();
+            final String novelKey;
+            novelKey = it.next();
+
             if(novelKey.contains("the"))
             {
                 storeMap.remove(novelKey);
@@ -285,12 +288,11 @@ public class BookStore
         int longestTitleLengthChars;
 
         longestTitleNovel = null;
-        longestTitleLengthChars = 0;
+        longestTitleLengthChars = NONE;
 
         for (final Novel book : bookList)
         {
             final String rawTitle;
-
             int rawTitleLength;
 
             rawTitle = book.getTitle().replace(" ", "");
@@ -337,15 +339,14 @@ public class BookStore
     public int howManyBooksContain(final String word)
     {
         final String lowercaseWord;
-
         int containCount;
 
-        containCount = 0;
+        containCount = NONE;
         lowercaseWord = word.trim().toLowerCase();
 
         for (final Novel book: bookList)
         {
-            String lowercaseBookTitle;
+            final String lowercaseBookTitle;
             lowercaseBookTitle = book.getTitle().toLowerCase();
 
             if (lowercaseBookTitle.contains(lowercaseWord))
@@ -370,7 +371,7 @@ public class BookStore
         int bookCount;
         double percentageBetween;
 
-        bookCount = 0;
+        bookCount = NONE;
 
         for (final Novel book: bookList)
         {

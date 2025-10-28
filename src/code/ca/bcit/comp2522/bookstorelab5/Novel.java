@@ -11,12 +11,21 @@ public class Novel
         implements Comparable<Novel>
 {
     /** The minimum year value allowed for a novel */
-    public static final int MIN_YEAR_PUBLISHED = 0;
+    public static final int MIN_YEAR_PUBLISHED = 1455;
+    private static final int LESS_THAN    = -1;
+    private static final int GREATER_THAN =  1;
 
     private final String title;
     private final String author;
     private final int    yearPublished;
 
+    /**
+     * Full constructor.
+     *
+     * @param title the title of the novel
+     * @param author the author of the novel
+     * @param yearPublished the year the novel was published
+     */
     Novel(final String title,
           final String author,
           final int yearPublished)
@@ -38,7 +47,7 @@ public class Novel
     {
         if (yearPublished < MIN_YEAR_PUBLISHED)
         {
-            throw new IllegalArgumentException("Year published is negative");
+            throw new IllegalArgumentException("Year published is invalid");
         }
     }
 
@@ -89,12 +98,11 @@ public class Novel
      * novels based on their title in alphabetic order.
      *
      * @param that another book
-     * @return -1 if this book comes before
-     *          1 if this book comes after
+     * @return {@value LESS_THAN} if this book comes before
+     *          {@value GREATER_THAN} if this book comes after
      *          on tie we compare lengths
-     *          -1 if this book has shorter title
-     *          1 if this book has longer title
-     *          0 if book titles are equal
+     *          {@value LESS_THAN} if this book has shorter title
+     *          {@value GREATER_THAN} if this book has longer title
      */
     @Override
     public int compareTo(final Novel that)
@@ -117,15 +125,15 @@ public class Novel
              thatChar = thatTitle.charAt(i);
 
             if (thisChar < thatChar) {
-                return -1; // this comes before other
+                return LESS_THAN; // this comes before other
             }
             else if (thisChar > thatChar) {
-                return 1; // this comes after other
+                return GREATER_THAN; // this comes after other
             }
             // if equal, continue to next character
         }
 
-        // Return -1 if this title is shorter, 1 if this title is longer, or 0 if equal.
+        // Return LESSON_THAN if this title is shorter, 1 if this title is longer, or 0 if equal.
         return Integer.compare(thisTitle.length(), thatTitle.length());
     }
 
