@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.bookStoreLab5;
 
 /**
- * A Novel has a title, author, and year published
+ * A Novel with a title, author, and year published.
  *
  * @author David Martinez,
  *         Daniel Do
@@ -18,7 +18,7 @@ public class Novel implements Comparable<Novel>
 
     Novel(final String title,
           final String author,
-          final int yearPublished)
+          final int    yearPublished)
     {
         checkString(title);
         checkString(author);
@@ -54,7 +54,7 @@ public class Novel implements Comparable<Novel>
     }
 
     /**
-     * Get title
+     * Getter for title.
      *
      * @return the title
      */
@@ -64,7 +64,7 @@ public class Novel implements Comparable<Novel>
     }
 
     /**
-     * Get author
+     * Getter for author name.
      *
      * @return the author
      */
@@ -74,7 +74,7 @@ public class Novel implements Comparable<Novel>
     }
 
     /**
-     * Get year published
+     * Getter for the year published.
      *
      * @return the year published
      */
@@ -84,8 +84,8 @@ public class Novel implements Comparable<Novel>
     }
 
     /**
-     * Compares novels based on title's
-     * Earlier in alphabetic is first
+     * CompareTo implementation that compares
+     * novels based on their title in alphabetic order.
      *
      * @param that another book
      * @return -1 if this book comes before
@@ -129,7 +129,7 @@ public class Novel implements Comparable<Novel>
     }
 
     /**
-     * Returns string sentence of the object instance data
+     * toString implementation for Novel class.
      *
      * @return string sentence of instance data
      */
@@ -147,15 +147,5 @@ public class Novel implements Comparable<Novel>
         sb.append(yearPublished);
 
         return sb.toString();
-    }
-
-    /**
-     * Getter for author's name
-     *
-     * @return a string of the author's name
-     */
-    public String getAuthorName()
-    {
-        return author;
     }
 }

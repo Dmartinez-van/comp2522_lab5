@@ -215,7 +215,7 @@ public class BookStore
 
     /**
      * Prints all titles that contain the specified parameter
-     * Not case-sensitive
+     * Not case-sensitive.
      *
      * @param word the parameter to search for
      */
@@ -234,7 +234,7 @@ public class BookStore
     }
 
     /**
-     * Prints all titles in alphabetical order, A-Z
+     * Prints all titles in alphabetical order, A-Z.
      */
     public void printTitlesInAlphaOrder()
     {
@@ -330,6 +330,7 @@ public class BookStore
 
     /**
      * Counts how many books contain the specified word in their title.
+     *
      * @param word the word to search for in book titles
      * @return the number of books that contain the word in their title
      */
@@ -438,62 +439,5 @@ public class BookStore
         }
 
         return booksOfCertainTitleLength;
-    }
-
-    /**
-     * Runner class for lab5
-     *
-     * @param args unused
-     */
-    public static void main(final String[] args)
-    {
-        final BookStore bookStore;
-        final Novel oldest;
-        final List<Novel> fifteenCharTitles;
-
-        bookStore = new BookStore("my Store");
-
-        // printAllTitle() works
-//        bookStore.printAllTitle();
-
-        // printBookTitle() works
-//        bookStore.printBookTitle("the");
-
-        // printTitlesInAlphaOrder() works
-//        bookStore.printTitlesInAlphaOrder();
-
-        // printGroupByDecade() works
-//        bookStore.printGroupByDecade(2000);
-//        System.out.println();
-
-//        System.out.println(bookStore.whichPercentWrittenBetween(2000, 2009));
-
-//        System.out.println(bookStore.getLongest().toString());
-
-        // Testing isThereABookWrittenIn() method
-        final int[] yearsToCheck = {1801, 1901, 1960};
-        for (final int checkYear : yearsToCheck)
-        {
-            System.out.printf("Is there a book written in %d?\n", checkYear);
-            if (bookStore.isThereABookWrittenIn(checkYear))
-            {
-                System.out.println("Yes");
-            }
-            else
-            {
-                System.out.println("No");
-            }
-        }
-
-        // TESTING getOldestBook() method
-        System.out.println("What is oldest book?\n" + bookStore.getOldestBook());
-        System.out.println();
-
-        // TESTING books of certain length
-        final List<Novel> myBooks = bookStore.getBooksThisLength(19);
-        System.out.println("Getting books of length '20'");
-        System.out.println(myBooks);
-
-
     }
 }

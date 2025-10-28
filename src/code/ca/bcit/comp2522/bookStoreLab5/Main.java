@@ -3,7 +3,7 @@ package ca.bcit.comp2522.bookStoreLab5;
 import java.util.List;
 
 /**
- * Runner Class for Lab5
+ * Runner Class for Lab5.
  *
  * @author David Martinez
  *         Daniel Do
@@ -51,7 +51,7 @@ public class Main
         oldest = bookstore.getOldestBook();
 
         System.out.println(oldest.getTitle() +
-                            " by " + oldest.getAuthorName() +
+                            " by " + oldest.getAuthor() +
                             ", " +
                             oldest.getYearPublished());
 
