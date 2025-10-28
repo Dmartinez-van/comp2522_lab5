@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Iterator;
 
-
 /**
  * BookStore can hold many {@link Novel} objects.
  * Has instance data for store name and list of bookList it has.
@@ -252,6 +251,7 @@ public class BookStore
 
     /**
      * Prints all books published in the specified decade.
+     *
      * @param decade the target decade
      */
     public void printGroupByDecade(final int decade)
@@ -276,6 +276,7 @@ public class BookStore
 
     /**
      * Finds and returns the novel with the longest title in the bookstore.
+     *
      * @return the Novel object with the longest title
      */
     public Novel getLongest()
@@ -307,6 +308,7 @@ public class BookStore
 
     /**
      * Checks if there is a book written in the specified year.
+     *
      * @param year the year to check
      * @return true if at least one book was published in that year, false otherwise
      */
@@ -355,6 +357,7 @@ public class BookStore
 
     /**
      * Calculates what percentage of books were written between two years (inclusive).
+     *
      * @param first the starting year (inclusive)
      * @param last the ending year (inclusive)
      * @return the percentage of books written between these years
@@ -362,8 +365,8 @@ public class BookStore
     public double whichPercentWrittenBetween(final int first,
                                              final int last)
     {
+        final int totalBooks;
         int bookCount;
-        int totalBooks;
         double percentageBetween;
 
         bookCount = 0;
@@ -387,6 +390,7 @@ public class BookStore
 
     /**
      * Finds and returns the oldest book in the bookstore.
+     *
      * @return the Novel object with the earliest publication year
      */
     public Novel getOldestBook()
@@ -412,6 +416,7 @@ public class BookStore
 
     /**
      * Returns a list of all books whose title length matches the specified length.
+     *
      * @param titleLength the length of the title to search for
      * @return a List of Novel objects whose titles are exactly this length
      */

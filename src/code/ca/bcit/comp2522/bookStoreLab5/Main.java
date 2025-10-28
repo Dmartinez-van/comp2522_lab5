@@ -13,6 +13,7 @@ public class Main
 {
     /**
      * Runner method for Main class
+     *
      * @param args unused
      */
     public static void main(String[] args)
